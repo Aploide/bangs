@@ -1,22 +1,27 @@
- # Bangs for Eyed Search
+ # Bangs!
 
-Welcome to "Bangs for Eyed Search" - a simple yet powerful tool designed to enhance your web navigation by providing quick and efficient search shortcuts known as "bang" commands. These bang shortcuts allow you to perform searches directly from the address bar of your browser, making it faster and more convenient than ever to find what you're looking for online.
+A simple yet powerful system designed to enhance your web navigation by providing quick and efficient search shortcuts known as "bang" commands. 
+These bang shortcuts allow you to perform searches directly from the address bar of your browser, making it faster and more convenient than ever to find what you're looking for online.
 
-## How Bang Shortcuts Work
+## How Bangs Work
 
-A bang shortcut is a URL that starts with an exclamation mark (`!`). When entered in the address bar of most search engines, it triggers a specific search query. For example:
-- Typing `!g hello` will open Google and perform a search for "hello".
-- Typing `!d who invented the internet` will direct you to DuckDuckGo to search for information on who invented the internet.
+A bang is a 'word' that starts with an exclamation mark (`!`). 
+When entered in the address bar of some search engines (ex. [Eyed Search](https://search.eyed.to)), it triggers a specific search query. 
+For example:
+- Typing `!gh bangs` will search on github all repositories containing 'bangs' in the name.
+- Typing `!w internet` will direct you to the WikiPedia page about the internet.
 
-## Available Bang Shortcuts
+## Available Bangs
 
-The repository contains predefined bang shortcuts in JSON format, stored in two files:
-1. **bangs.json**: Contains the full set of bang shortcuts including comments and formatting for easy readability.
-2. **bangs.minified.json**: A minified version of `bangs.json` without comments or unnecessary whitespace, optimized for faster processing.
+The repository contains all the current bangs in JSON format, stored in two files:
+1. **bangs.json**: Contains the full set of bangs, formatted, for easy readability.
+2. **bangs.minified.json**: A minified version of `bangs.json` without unnecessary whitespace, optimized for faster processing.
 
-## Contributing to Bangs for Eyed Search
+## Contributing to Bangs!
 
-We welcome contributions from the community! If you have a useful bang shortcut that isn't already listed, please consider adding it. Here’s how you can contribute:
+We welcome contributions from the community! If you have a useful bang shortcut that isn't already listed, please consider adding it. 
+
+Here’s how you can contribute:
 
 1. **Fork the Repository**: Click on the "Fork" button at the top right of this repository to create your own copy.
 2. **Clone the Forked Repository**: Clone it to your local machine using `git clone https://github.com/aploide/bangs`.
@@ -24,11 +29,11 @@ We welcome contributions from the community! If you have a useful bang shortcut 
 
 ```json
 {
-    "bangshortcut": "example",
+    "!uniqueIdentifier": "Formatted url with {{{query}}}",
     "!newshortcut": "https://example.com/?q={{{query}}}"
 }
 ```
-Make sure your shortcut starts with an exclamation mark (`!`) followed by a unique identifier and the URL pattern which includes `{{{query}}}` where the search term should be inserted.
+Make sure your bang shortcut starts with an exclamation mark (`!`) followed by a unique identifier and the URL pattern which includes `{{{query}}}` where the search term should be inserted.
 
 4. **Test Your Contribution**: Before submitting a pull request, test your bang link to ensure it works as expected in your browser.
 5. **Submit a Pull Request**: Push your changes to your fork and submit a pull request to this repository. Please include a clear description of your changes.
@@ -37,12 +42,12 @@ Make sure your shortcut starts with an exclamation mark (`!`) followed by a uniq
 
 ## Example Contribution
 
-If you want to add a shortcut that searches YouTube for tutorials on "JavaScript basics", your entry might look like this:
+If you want to add a shortcut that searches on the WikiDictionary, your entry might look like this:
 
 ```json
 {
-    "bangshortcut": "JavaScript tutorials",
-    "!yt": "https://www.youtube.com/results?q={{{query}}}"
+    // Actually this bang is really present in the bangs
+    "!wikt": "https://en.wiktionary.org/w/index.php?search={{{query}}}"
 }
 ```
 
@@ -50,5 +55,18 @@ After adding this to `bangs.json` and running the minification script, it should
 
 ## Scripts for Minification
 
-You can use a Bash script located at `/path/to/your/minfier.sh bangs.json` to generate `bangs.minified.json`. Ensure the script has execute permissions (`chmod +x minifier.sh`).
+You can use the Bash script `minifier.sh` to minify the banglist, to use just type:
+
+```bash
+bash minifier.sh bangs.json
+
+#Or you can call it like this:
+
+chmod +x minifier.sh 
+#then
+./minifier.sh bangs.json
+
+## If everything is right it should output "Minified JSON saved to bangs.minified.json"
+```
+
 
